@@ -150,7 +150,9 @@ class ScanProcessor():
 
     def handleDiscovery(self, dev, isNewDev, isNewData):
         global OLD_MEASURE
+        sys.stdout.write(f"{datetime.now().strftime('%Y-%m-%d %H:%M:%S')} - MACs parsed {MISCALE_MAC.lower()}\n")
         if dev.addr in MISCALE_MAC.lower().split(",") and isNewDev:
+            sys.stdout.write(f"{datetime.now().strftime('%Y-%m-%d %H:%M:%S')} - MAC matched {dev.addr}\n")
             for (sdid, desc, data) in dev.getScanData():
                 ### Xiaomi V1 Scale ###
                 if data.startswith('1d18') and sdid == 22:
