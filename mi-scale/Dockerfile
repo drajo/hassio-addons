@@ -6,11 +6,11 @@ COPY src /opt/miscale
 RUN apt-get update && apt-get install --no-install-recommends -y \
     build-essential \
     bluez \
-    python-pip \
+    python-pip3 \
     libglib2.0-dev && \
     rm -rf /var/lib/apt/lists/*
 
-RUN pip install -r requirements.txt
+RUN pip3 install -r requirements.txt
 
 # Copy in docker scripts to root of container...
 COPY dockerscripts/ /
